@@ -1,0 +1,38 @@
+{% set name = "testapp" %}
+{% set data = load_file_regex(load_file=RECIPE_DIR + "/../src/testapp/__init__.py", regex_pattern="__version__\\s*=\\s*['\"]([^'\"]+)['\"]") %}
+{% set version = data.group(1) %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  path: ..
+
+build:
+  number: 0
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python >=3.10
+    - pip
+    - hatchling
+  run:
+    - python >=3.10
+
+test:
+  imports:
+    - testapp
+
+about:
+  home: git@github.com:jakobnissen/test-app-ssi.git
+  license: MIT
+  license_family: MIT
+  summary: Test app to test SSIs deployment system
+  dev_url: git@github.com:jakobnissen/test-app-ssi.git
+
+extra:
+  recipe-maintainers:
+    - Jakob Nybo Andersen

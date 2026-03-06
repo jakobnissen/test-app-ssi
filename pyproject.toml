@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "testapp"
+dynamic = ["version"]
+description = "Test application to test SSIs deployment system"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "SSI-DK" },
+]
+dependencies = []
+
+[project.scripts]
+testapp = "testapp.cli:main"
+
+[project.urls]
+Homepage = "git@github.com:jakobnissen/test-app-ssi.git"
+Repository = "git@github.com:jakobnissen/test-app-ssi.git"
+
+[tool.hatch.version]
+path = "src/testapp/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testapp"]
+
+[tool.ruff]
+line-length = 100
