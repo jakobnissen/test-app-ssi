@@ -16,6 +16,9 @@ dependencies = []
 [project.scripts]
 testapp = "testapp.cli:main"
 
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+
 [project.urls]
 Homepage = "git@github.com:jakobnissen/test-app-ssi.git"
 Repository = "git@github.com:jakobnissen/test-app-ssi.git"
